@@ -6,7 +6,7 @@ export async function createEmployee({ name, birthday, salary }) {
     `INSERT INTO employees (name, birthday, salary)
      VALUES ($1, $2, $3)
      RETURNING *;`,
-    [name, birthday, salary]
+    [name, birthday, salary],
   );
   return result.rows[0];
 }
@@ -38,7 +38,7 @@ export async function updateEmployee({ id, name, birthday, salary }) {
      SET name = $2, birthday = $3, salary = $4
      WHERE id = $1
      RETURNING *;`,
-    [id, name, birthday, salary]
+    [id, name, birthday, salary],
   );
   return result.rows[0];
 }
@@ -52,7 +52,7 @@ export async function deleteEmployee(id) {
     `DELETE FROM employees
      WHERE id = $1
      RETURNING *;`,
-    [id]
+    [id],
   );
   return result.rows[0];
 }
